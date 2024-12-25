@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+/* Red border in fields with errors */
+.field_with_errors :is(input, textarea, select) {
+  @apply border-2 border-red-500
 }
-
-*/
