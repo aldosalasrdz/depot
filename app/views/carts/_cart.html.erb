@@ -2,19 +2,7 @@
   <h2 class="font-bold text-lg mb-3">Your Cart</h2>
 
   <table class="table-auto">
-    <% cart.line_items.each do |line_item| %>
-      <tr>
-        <td class="p-1">
-          <%= button_to "Remove", line_item, method: :delete, class: "rounded-lg text-sm font-medium py-1 px-2 bg-zinc-300" %>
-        </td>
-        <td class="p-1 text-right tabular-nums"><%= line_item.quantity %></td>
-        <td>&times;</td>
-        <td class="p-1 pr-2"><%= line_item.product.title %></td>
-        <td class="p-1 text-right font-bold">
-          <%= number_to_currency(line_item.total_price) %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render cart.line_items %>
 
     <tfoot>
       <tr>
