@@ -52,11 +52,11 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy line_item" do
-    cart = @line_item.cart
     assert_difference("LineItem.count", -1) do
-      delete line_item_url(@line_item)
+      delete line_item_url(@line_item), as: :turbo_stream
     end
 
-    assert_redirected_to cart_url(cart)
+    assert_response :success
+    assert_match "id=\"cart\"", @response.body
   end
 end

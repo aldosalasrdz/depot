@@ -57,7 +57,14 @@ class LineItemsController < ApplicationController
     @line_item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to cart_path(@cart), status: :see_other, notice: "Line item was successfully destroyed." }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          :cart,
+          partial: "layouts/cart",
+          locals: { cart: @cart }
+        )
+      end
+      format.html { redirect_to store_index_url }
       format.json { head :no_content }
     end
   end
