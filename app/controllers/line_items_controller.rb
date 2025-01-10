@@ -54,7 +54,12 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1 or /line_items/1.json
   def destroy
     @cart = @line_item.cart
-    @line_item.destroy!
+
+    if @line_item.quantity > 1
+      @line_item.update(quantity: @line_item.quantity - 1)
+    else
+      @line_item.destroy!
+    end
 
     respond_to do |format|
       format.turbo_stream do
