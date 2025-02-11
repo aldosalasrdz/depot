@@ -1,0 +1,29 @@
+es:
+  layouts:
+    application:
+      title: "Biblioteca Pragmatic"
+      home: "Inicio"
+      questions: "Preguntas"
+      news: "Noticias"
+      contact: "Contacto"
+  store:
+    index:
+      title: "Tu Catálogo Pragmatic"
+    product:
+      add_to_cart: "Añadir al Carrito"
+  carts:
+    cart:
+      title: "Tu Carrito"
+      empty: "Vaciar Carrito"
+      checkout: "Comprar"
+  line_items:
+    line_item:
+      remove: "Eliminar"
+  number:
+    currency:
+      format:
+        unit: "$US"
+        precision: 2
+        separator: ", "
+        delimiter: ". "
+        format: "%n&nbsp;%u"
