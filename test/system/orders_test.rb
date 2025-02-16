@@ -15,29 +15,29 @@ class OrdersTest < ApplicationSystemTestCase
     assert has_no_field? "Expiration date"
     assert has_no_field? "Po number"
 
-    select "Check", from: "Pay type"
+    select "Check", from: "Pay with"
 
-    assert has_field? "Routing number"
-    assert has_field? "Account number"
-    assert has_no_field? "Credit card number"
-    assert has_no_field? "Expiration date"
-    assert has_no_field? "Po number"
+    assert has_field? "Routing #"
+    assert has_field? "Account #"
+    assert has_no_field? "CC #"
+    assert has_no_field? "Expiry"
+    assert has_no_field? "PO #"
 
-    select "Credit card", from: "Pay type"
+    select "Credit Card", from: "Pay with"
 
-    assert has_no_field? "Routing number"
-    assert has_no_field? "Account number"
-    assert has_field? "Credit card number"
-    assert has_field? "Expiration date"
-    assert has_no_field? "Po number"
+    assert has_no_field? "Routing #"
+    assert has_no_field? "Account #"
+    assert has_field? "CC #"
+    assert has_field? "Expiry"
+    assert has_no_field? "PO #"
 
-    select "Purchase order", from: "Pay type"
+    select "Purchase Order", from: "Pay with"
 
-    assert has_no_field? "Routing number"
-    assert has_no_field? "Account number"
-    assert has_no_field? "Credit card number"
-    assert has_no_field? "Expiration date"
-    assert has_field? "Po number"
+    assert has_no_field? "Routing #"
+    assert has_no_field? "Account #"
+    assert has_no_field? "CC #"
+    assert has_no_field? "Expiry"
+    assert has_field? "PO #"
   end
 
   test "add to cart should create a cart" do
@@ -53,7 +53,7 @@ class OrdersTest < ApplicationSystemTestCase
     visit store_index_url
 
     click_on "Add to Cart", match: :first
-    click_on "Empty cart"
+    click_on "Empty Cart"
 
     assert has_no_text? "Your Cart"
   end
@@ -73,8 +73,8 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in "Email", with: "dave@example.com"
 
     select "Check"
-    fill_in "Routing number", with: "123456"
-    fill_in "Account number", with: "987654"
+    fill_in "Routing #", with: "123456"
+    fill_in "Account #", with: "987654"
 
     click_button "Place order"
     assert_text "Thank you for your order"

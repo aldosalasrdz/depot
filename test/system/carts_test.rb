@@ -14,7 +14,7 @@ class CartsTest < ApplicationSystemTestCase
     visit store_index_url
 
     click_on "Add to Cart", match: :first
-    click_on "Empty cart"
+    click_on "Empty Cart"
 
     assert has_no_text? "Your Cart"
   end

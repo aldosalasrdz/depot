@@ -18,7 +18,7 @@ class ActionDispatch::IntegrationTest
   def login_as(user)
     if respond_to? :click_on
       visit login_url
-      fill_in :name, user.name
+      fill_in :name, with: user.name
       fill_in :password, with: "secret"
       click_on "Login"
       find "h1", "Welcome", wait: 5 # Add a wait for page switching
