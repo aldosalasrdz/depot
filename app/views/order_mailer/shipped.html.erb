@@ -5,5 +5,5 @@
 
 <table>
   <tr><th colspan="2">Qty</th><th>Description</th></tr>
-  <%= render @order.line_items -%>
+  <%= render partial: "line_items/line_item_mailer", collection: @order.line_items, as: :line_item %>
 </table>
