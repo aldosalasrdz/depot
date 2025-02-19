@@ -3,13 +3,31 @@
 <% else %>
 <tr>
 <% end %>
+  <td class="p-1">
+    <%= button_to decrement_quantity_line_item_path(line_item), method: :patch, class: "rounded-lg text-sm font-medium p-1 bg-zinc-300" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+        <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+      </svg>
+    <% end %>
+  </td>
+  <td class="p-1">
+    <%= button_to line_items_path(product_id: line_item.product), class: "rounded-lg text-sm font-medium p-1 bg-zinc-300" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+        <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+      </svg>
+    <% end %>
+  </td>
   <td class="p-1 text-right tabular-nums"><%= line_item.quantity %></td>
   <td>&times;</td>
   <td class="p-1 pr-2"><%= line_item.product.title %></td>
+  <td class="p-1">
+    <%= button_to remove_all_line_item_path(line_item), method: :delete, class: "rounded-lg text-sm font-medium p-1 bg-zinc-300" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+        <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+      </svg>
+    <% end %>
+  </td>
   <td class="p-1 text-right font-bold">
     <%= number_to_currency(line_item.total_price) %>
-  </td>
-  <td class="p-1">
-    <%= button_to t(".remove"), line_item, method: :delete, class: "rounded-lg text-sm font-medium py-1 px-2 bg-zinc-300" %>
   </td>
 </tr>
