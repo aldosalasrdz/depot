@@ -6,7 +6,7 @@ services:
     volumes:
       - ./log:/rails/log
       - ./storage:/rails/storage
-    port:
+    ports:
       - "3000:3000"
     environment:
       - REDIS_URL=redis://redis-db:6379
