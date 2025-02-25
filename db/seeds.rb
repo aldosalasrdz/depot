@@ -60,4 +60,4 @@ Product.create!(title: 'Modern Front-End Development for Rails, Second Edition',
   image_url: 'nrclient2.jpg',
   price: 28.95)
 
-# User.create! name: 'dave', password: Rails.application.credentials.dave_password
+User.create! name: 'dave', password: Rails.application.credentials.dave_password
