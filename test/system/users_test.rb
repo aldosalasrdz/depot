@@ -3,6 +3,14 @@ require "application_system_test_case"
 class UsersTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
+    @other_user = users(:two)
+
+    visit login_url
+    fill_in "Name", with: @user.name
+    fill_in "Password", with: "secret"
+    click_button "Login"
+
+    assert_text "Welcome"
   end
 
   test "visiting the index" do
@@ -14,32 +22,34 @@ class UsersTest < ApplicationSystemTestCase
     visit users_url
     click_on "New user"
 
-    fill_in "Name", with: @user.name
+    new_user_name = "aldo"
+
+    fill_in "Name", with: new_user_name
     fill_in "Password", with: "secret"
     fill_in "Confirm", with: "secret"
     click_on "Create User"
 
-    assert_text "User #{@user.name} was successfully created"
-    click_on "Back"
+    assert_text "User #{new_user_name} was successfully created"
   end
 
   test "should update User" do
     visit user_url(@user)
     click_on "Edit this user", match: :first
 
-    fill_in "Name", with: @user.name
+    updated_user_name = "aldo salas"
+
+    fill_in "Name", with: updated_user_name
     fill_in "Password", with: "secret"
     fill_in "Confirm", with: "secret"
     click_on "Update User"
 
-    assert_text "User #{@user.name} was successfully updated"
-    click_on "Back"
+    assert_text "User #{updated_user_name} was successfully updated"
   end
 
   test "should destroy User" do
-    visit user_url(@user)
+    visit user_url(@other_user)
     click_on "Destroy this user", match: :first
 
-    assert_text "User #{@user.name} was successfully destroyed"
+    assert_text "User was successfully destroyed"
   end
 end
